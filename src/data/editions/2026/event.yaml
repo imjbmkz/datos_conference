@@ -18,10 +18,11 @@ timezone_label: "Philippine Time (UTC+8)"
 venue:
   name: "Google Philippines Headquarters"
   area: "Bonifacio Global City, Taguig"
-  address: "TODO: full street address"   # TODO: confirm exact address and floor
-  map_query: "Google Philippines, Bonifacio Global City, Taguig"
+  address: "38th Floor, Seven NEO Building, 5th Ave, BGC Taguig City"
+  map_query: "E Square, Crescent Park Residences, 38th Floor, Seven NEO, 5th Ave, Manila, 1016 Metro Manila"
   notes:
-    - "Bring a valid ID for building entry."   # TODO: confirm venue entry rules
+    - "Bring a valid government ID for building entry."
+    - "Dress code is smart casual."
     - "Arrive by 3:45 PM to clear security and registration."
 
 capacity: 80
@@ -59,4 +60,4 @@ reminders:
   - "Bring a valid government or school ID."
   - "Have your approved Meetup RSVP ready at the registration desk."
   - "Bring a laptop if you'd like to follow along; it's optional."
-  - "Dinner break runs from 5:35 PM to 6:20 PM."   # TODO: confirm if food is provided
+  - "Dinner break runs from 5:35 PM to 6:20 PM. Dinner's on us!"

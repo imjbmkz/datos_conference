@@ -3,77 +3,96 @@
 #        Leave empty to show initials until the photo arrives.
 # group: speaker | host | remarks   (controls where the card appears)
 
-- id: renzi-vidal
-  name: "Renzi Vidal"
-  org: "Data Engineering Pilipinas"
-  org_short: "DEP"
-  title: ""          # TODO
-  photo: ""          # TODO
-  bio: ""            # TODO
+- id: tim-nicholas
+  name: "Tim Nicholas"
+  org: "Permhunt"
+  org_short: "Permhunt"
+  title: "Co-Founder & CEO"
+  photo: "tim_nicholas.jpg"
+  bio: "Tim Nicholas is the Co-founder and CEO of Permhunt, a technology recruitment firm specialising in helping global technology companies build high-performing tech teams in Manila. Tim works closely with international businesses on talent strategy, market entry and building specialist technology teams across the region."
   group: speaker
-  links: {}
+  links:
+    linkedin: "https://www.linkedin.com/in/timothy-nicholas-45a264102/"
 
 - id: geoff-newell
   name: "Geoff Newell"
   org: "Beyond"
   org_short: "Beyond"
-  title: ""          # TODO
-  photo: ""
-  bio: ""
+  title: "Delivery Centre Director (APAC)"
+  photo: "geoff_newell.jpg"
+  bio: "Geoff Newell is the APAC Delivery Centre Lead at Beyond, a global Google-first technology and engineering company specialising in cloud, data, AI and digital transformation. Geoff leads Beyond’s delivery operations across APAC, supporting the growth and development of its engineering capabilities in the region."
   group: speaker
-  links: {}
+  links: 
+    linkedin: "https://www.linkedin.com/in/geoff-newell/"
+
+- id: renzi-vidal
+  name: "Renzi Vidal"
+  org: "Data Engineering Pilipinas"
+  org_short: "DEP"
+  title: "Sr. AI and Data Engineer"
+  photo: "renzi_vidal.jpg"
+  bio: "Seasoned Sr. AI and Data Engineer with 13+ years of progressive experience in data architecture, data pipelines, and enterprise data solutions across multiple platforms. GCP specialist recognized by management as an AI Automation Pioneer for leading the department's Agentic AI transformation as an Agent Builder. Combines deep data engineering expertise with AI architecture oversight to design production solutions. He holds Google Generative AI Leader and Associate Data Practitioner certifications and is a 2023 Luminaries Awardee, recognizing the best of the best associates in Manila who exemplified excellence and made a significant impact to the business."
+  group: speaker
+  links: 
+    linkedin: "https://www.linkedin.com/in/ultrenz-vidal/"
 
 - id: mike-bellen
   name: "Mike Bellen"
   org: "Data Engineering Pilipinas"
   org_short: "DEP"
-  title: ""
-  photo: ""
-  bio: ""
-  group: speaker
-  links: {}
-
-- id: tim-nicholas
-  name: "Tim Nicholas"
-  org: "Permhunt"
-  org_short: "Permhunt"
-  title: ""
-  photo: ""
-  bio: ""
-  group: speaker
-  links: {}
-
-- id: josh-valdeleon
-  name: "Josh Valdeleon"
-  org: "Data Engineering Pilipinas"
-  org_short: "DEP"
-  title: ""
-  photo: ""
-  bio: ""
+  title: "Senior AI Engineer"
+  photo: "mike_bellen.jpg"
+  bio: "Data Scientist with expertise in advanced analytics and machine learning (MIT certified). Skilled in supervised/unsupervised models, deep learning, reinforcement learning, and database systems. Proven ability to leverage data insights across industries for impactful results."
   group: speaker
   links:
-    linkedin: "https://www.linkedin.com/in/joshdevph"
-    github: "https://github.com/imjbmkz"
+    linkedin: "https://www.linkedin.com/in/mikebellen/"
+
+
 
 - id: myk-ogbinar
   name: "Myk Ogbinar"
   org: "Data Engineering Pilipinas"
   org_short: "DEP"
   title: "Founder, Data Engineering Pilipinas"
-  photo: ""
+  photo: "myk_ogbinar.jpg"
+  bio: "Myk Ogbinar is head of data and analytics at San Miguel Corporation, where he leads enterprise-wide data, analytics and AI initiatives. He has helped organizations in IT, retail, energy, telecommunications, banking and conglomerates use data to improve customer engagement, marketing and operations. He holds a computer science degree, an MBA and a master of engineering in AI from UP Diliman, and is now pursuing a PhD. As founder of Data Engineering Pilipinas, he has built a community that makes data skills and open-source tools more accessible. He also mentors women in the FTW Foundation's Data Science Bootcamp."
+  group: remarks
+  links:
+    linkedin: "https://www.linkedin.com/in/ogbinar/"
+
+- id: jonald-tenio
+  name: "Jonald Tenio"
+  org: "Data Engineering Pilipinas"
+  org_short: "DEP"
+  title: "Partnerships and Alliances Lead"
+  photo: "jonald_tenio.jpg"
   bio: ""
   group: remarks
-  links: {}
+  links:
+    linkedin: "https://www.linkedin.com/in/dwg-jonten-r-929175280/"
+
+- id: josh-valdeleon
+  name: "Josh Valdeleon"
+  org: "Data Engineering Pilipinas"
+  org_short: "DEP"
+  title: "Organizer and Moderator"
+  photo: "josh_valdeleon.jpg"
+  bio: "He is a data engineer and consultant with 6+ years of experience in data engineering, analytics, and business intelligence. He has worked with various organizations to design and implement data solutions that drive business insights and decision-making. Josh is passionate about sharing knowledge and helping others grow in the field of data engineering."
+  group: remarks
+  links:
+    linkedin: "https://www.linkedin.com/in/joshdevph"
+    facebook: "https://www.facebook.com/joshdevph"
 
 - id: katherine-bulac
   name: "Katherine Bulac"
   org: "Data Engineering Pilipinas"
   org_short: "DEP"
   title: "Host"
-  photo: ""
-  bio: ""
-  group: host
-  links: {}
+  photo: "katherine_bulac.jpg"
+  bio: "Katherine Bulac is a moderator at Data Engineering Pilipinas, where she helps run the community's learning programs, including DataCamp scholarships, DataMasters, AI Study and The Puso Project. She also supports DEP's YouTube, Meetup and Discord communities, and is your host for DATOS 2026."
+  group: remarks
+  links:
+    linkedin: "https://www.linkedin.com/in/katherinebulac/"
 
 - id: dep-project-leads
   name: "DEP Project Leads"

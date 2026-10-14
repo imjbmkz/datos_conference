@@ -11,22 +11,33 @@
 - name: "Myk Ogbinar"
   role: "Founder"
   org: "Data Engineering Pilipinas"
-  photo: ""
-  links: {}
+  photo: "myk_ogbinar.jpg"
+  links:
+    linkedin: "https://www.linkedin.com/in/ogbinar/"
 
-- name: "Katherine Bulac"
-  role: "Program host"          # TODO: confirm role title
+- name: "Jonald Tenio"
+  role: "Partnerships and Alliances Lead"
   org: "Data Engineering Pilipinas"
-  photo: ""
-  links: {}
+  photo: "jonald_tenio.jpg"
+  links:
+    linkedin: "https://www.linkedin.com/in/dwg-jonten-r-929175280/"
 
 - name: "Josh Valdeleon"
-  role: "Organizer"             # TODO: confirm role title
+  role: "Organizer and Moderator"
   org: "Data Engineering Pilipinas"
-  photo: ""
+  photo: "josh_valdeleon.jpg"
   links:
     linkedin: "https://www.linkedin.com/in/joshdevph"
-    github: "https://github.com/imjbmkz"
+    facebook: "https://www.facebook.com/joshdevph"
+
+- name: "Katherine Bulac"
+  role: "Host"          # TODO: confirm role title
+  org: "Data Engineering Pilipinas"
+  photo: "katherine_bulac.jpg"
+  links:
+    linkedin: "https://www.linkedin.com/in/katherinebulac/"
+
+
 
 # Example of a new organizer:
 # - name: "Juan dela Cruz"

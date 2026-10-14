@@ -8,7 +8,7 @@ name: "DATOS"
 full_name: "DATOS: The Data Engineering Pilipinas Conference"
 tagline: "The Data Engineering Pilipinas Conference"
 domain: "datos.dataengineering.ph"
-contact_email: "TODO@dataengineering.ph"   # TODO: confirm the contact email
+contact_email: "dataengineeringpilipinas@gmail.com"
 
 nav:
   - { label: "About", href: "/about/" }
@@ -29,12 +29,12 @@ organizer:
     A community for data engineers, data analysts, data scientists, developers,
     AI/ML engineers, and users of open- and closed-source data tools in the
     Philippines. Data Engineering Pilipinas is a PyData group.
-  code_of_conduct_url: "TODO"   # TODO: link to DEP's code of conduct
+  code_of_conduct_url: "https://dataengineering.ph/about.html#code-of-conduct-based-from-pydata"
 
 # Community reach, shown on the About page.
 community_stats:
-  - { value: "40k+", label: "community members" }
-  - { value: "42.8k", label: "Facebook group members" }
+  # - { value: "43k+", label: "community members" }
+  - { value: "43.7k", label: "Facebook group members" }
   - { value: "7.6k", label: "Discord members" }
   - { value: "5.8k", label: "Meetup members" }
   - { value: "5.8k", label: "Reddit members" }

@@ -132,8 +132,8 @@ def load_content() -> dict:
     sd = event["start_dt"]
     event["date_label"] = f"{sd:%B} {sd.day}, {sd.year}"  # avoids %-d, which fails on Windows
     event["weekday"] = event["start_dt"].strftime("%A")
-    event["time_label"] = f"{time_label(event['doors_open_dt'])} – {time_label(event['end_dt'])}"
-    event["program_label"] = f"Program starts {time_label(event['start_dt'])}"
+    event["time_label"] = f"{time_label(event['start_dt'])} – {time_label(event['end_dt'])}"
+    event["program_label"] = f"Registration starts {time_label(event['doors_open_dt'])}"
     event["venue"]["address_known"] = not is_todo(event["venue"].get("address"))
     event["registration"]["url_is_event_page"] = "/events/" in event["registration"]["url"]
 

@@ -14,8 +14,8 @@ tiers:
   - name: "Sponsors"        # TODO: rename / split into tiers once the list is final
     size: lg
     sponsors:
-      - { name: "Permhunt", url: "", logo: "" }   # TODO: logo + URL
-      - { name: "Beyond", url: "", logo: "" }     # TODO: logo + URL
+      - { name: "Permhunt", url: "https://permhunt.com/", logo: "permhunt.jpg" }   # TODO: logo + URL
+      - { name: "Beyond", url: "https://www.bynd.com/", logo: "beyond.jpg" }     # TODO: logo + URL
 
   - name: "Organized by"
     size: md
