@@ -11,7 +11,7 @@ call_for_sponsors:
     support the community and meet the people building data platforms here.
 
 tiers:
-  - name: "Sponsors"        # TODO: rename / split into tiers once the list is final
+  - name: "Supported by"
     size: lg
     sponsors:
       - { name: "Permhunt", url: "https://permhunt.com/", logo: "permhunt.jpg" }   # TODO: logo + URL
