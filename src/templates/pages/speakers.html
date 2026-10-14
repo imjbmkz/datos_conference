@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% import "components/ui.html" as ui %}
+{% import "components/people.html" as people %}
+
+{% block content %}
+<header class="page-header">
+  {{ ui.pixels("pixels--a") }}
+  <div class="container">
+    <p class="eyebrow">Speakers</p>
+    <h1>The people sharing at DATOS</h1>
+    <p class="lead">Data engineers, community leads and recruiters from Data Engineering Pilipinas and our partners. Select a card to see their sessions.</p>
+  </div>
+</header>
+
+<section class="section">
+  <div class="container">
+    {{ ui.section_head("Speakers & panelists", level=2) }}
+    <div class="grid grid--4">
+      {% for p in speaker_groups.speaker %}{{ people.speaker_card(p) }}{% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section section--tint">
+  <div class="container">
+    {{ ui.section_head("Hosts & remarks", level=2) }}
+    <div class="grid grid--4">
+      {% for p in speaker_groups.host + speaker_groups.remarks %}{{ people.speaker_card(p) }}{% endfor %}
+    </div>
+  </div>
+</section>
+
+{% for p in speakers %}{{ people.speaker_dialog(p) }}{% endfor %}
+{% endblock %}

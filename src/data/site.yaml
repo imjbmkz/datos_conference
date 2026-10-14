@@ -1,0 +1,50 @@
+# Site-wide settings shared by every edition.
+# To launch a new year: copy src/data/editions/<last year>/ to a new folder
+# and change `current_edition` below.
+
+current_edition: "2026"
+
+name: "DATOS"
+full_name: "DATOS: The Data Engineering Pilipinas Conference"
+tagline: "The Data Engineering Pilipinas Conference"
+domain: "datos.dataengineering.ph"
+contact_email: "TODO@dataengineering.ph"   # TODO: confirm the contact email
+
+nav:
+  - { label: "About", href: "/about/" }
+  - { label: "Schedule", href: "/schedule/" }
+  - { label: "Speakers", href: "/speakers/" }
+  - { label: "Sponsors", href: "/sponsors/" }
+
+cta:
+  label: "Register"
+  href: "/register/"
+
+organizer:
+  name: "Data Engineering Pilipinas"
+  short: "DEP"
+  url: "https://dataengineering.ph/"
+  logo: "images/brand/dep-logo.png"
+  blurb: >-
+    A community for data engineers, data analysts, data scientists, developers,
+    AI/ML engineers, and users of open- and closed-source data tools in the
+    Philippines. Data Engineering Pilipinas is a PyData group.
+  code_of_conduct_url: "TODO"   # TODO: link to DEP's code of conduct
+
+# Community reach, shown on the About page.
+community_stats:
+  - { value: "40k+", label: "community members" }
+  - { value: "42.8k", label: "Facebook group members" }
+  - { value: "7.6k", label: "Discord members" }
+  - { value: "5.8k", label: "Meetup members" }
+  - { value: "5.8k", label: "Reddit members" }
+  - { value: "8.5k", label: "DataCamp scholars" }
+
+socials:
+  - { label: "Facebook group", url: "https://www.facebook.com/groups/dataengineeringpilipinas/" }
+  - { label: "Facebook page", url: "https://www.facebook.com/DataEngineeringPilipinas/" }
+  - { label: "Discord", url: "https://discord.com/invite/buDgydz7J9" }
+  - { label: "Meetup", url: "https://www.meetup.com/data-engineering-pilipinas/" }
+  - { label: "LinkedIn", url: "https://www.linkedin.com/company/97217550/" }
+  - { label: "YouTube", url: "https://www.youtube.com/@DataEngineeringPilipinas" }
+  - { label: "Reddit", url: "https://www.reddit.com/r/DataEngineeringPH/" }

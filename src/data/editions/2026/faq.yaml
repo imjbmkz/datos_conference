@@ -1,0 +1,17 @@
+- q: "How much does it cost?"
+  a: "DATOS is free. Seats are limited to 80, so registration goes through Meetup and every RSVP is reviewed."
+
+- q: "How do I know if my registration is approved?"
+  a: "Meetup will notify you once an organizer approves your RSVP. If the event fills up, you'll be placed on the waitlist."
+
+- q: "Who should attend?"
+  a: "Anyone curious about data engineering: students, career shifters, data analysts, data scientists, engineers and hiring managers. You don't need to be an expert."
+
+- q: "Will the sessions be streamed or recorded?"
+  a: "We're planning to livestream the talks and panel. The link will be shared on this site and on the Data Engineering Pilipinas pages."
+
+- q: "What should I bring?"
+  a: "A valid ID and your approved Meetup RSVP. A laptop is optional."
+
+- q: "Is there a code of conduct?"
+  a: "Yes. DATOS follows the Data Engineering Pilipinas code of conduct. Everyone is expected to be kind, respectful and welcoming."

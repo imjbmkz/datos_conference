@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% import "components/ui.html" as ui %}
+{% import "components/sponsors.html" as sponsors_ui %}
+
+{% block content %}
+<header class="page-header">
+  {{ ui.pixels("pixels--a") }}
+  <div class="container">
+    <p class="eyebrow">Sponsors & partners</p>
+    <h1>Thank you for backing the community</h1>
+    <p class="lead">DATOS is free for attendees because of the organizations below. We're grateful for their support.</p>
+  </div>
+</header>
+
+<section class="section">
+  <div class="container">
+    {{ sponsors_ui.logo_tiers(sponsors.tiers) }}
+  </div>
+</section>
+
+{% if sponsors.call_for_sponsors.enabled %}
+<section class="section section--tint" id="partner">
+  <div class="container split">
+    <div>
+      {{ ui.section_head("Partner with DATOS", eyebrow="Open to sponsors, projects & communities", lead=sponsors.call_for_sponsors.text) }}
+      <ul class="check-list">
+        <li>Reach data engineers, analysts, students and career shifters</li>
+        <li>Support a free, volunteer-run community event</li>
+        <li>Fellow tech communities are welcome to co-promote and join us</li>
+      </ul>
+    </div>
+    <div class="grid grid--stats">
+      {% for s in site.community_stats[:4] %}{{ ui.stat(s) }}{% endfor %}
+    </div>
+  </div>
+  <div class="container" style="margin-top:var(--space-7)">
+    {% set contact_href = ("mailto:" ~ site.contact_email) if not is_todo(site.contact_email) else (site.socials | selectattr("label", "equalto", "Facebook page") | map(attribute="url") | first) %}
+    {{ ui.cta_banner("Let's talk",
+        "Reach out to the Data Engineering Pilipinas team about sponsorships, community partnerships or speaking at a future DATOS.",
+        [{"label": "Contact the organizers", "href": contact_href, "variant": "light", "external": is_todo(site.contact_email)}]) }}
+  </div>
+</section>
+{% endif %}
+{% endblock %}

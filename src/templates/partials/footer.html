@@ -1,0 +1,38 @@
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__flag" aria-hidden="true">
+      <i style="background:#0b2a5b"></i><i style="background:#1e6fd9"></i><i style="background:#14b3b0"></i><i style="background:#fcd116"></i><i style="background:#ce1126"></i>
+    </div>
+    <div class="site-footer__grid">
+      <div class="site-footer__org">
+        <img src="{{ url(site.organizer.logo) }}" alt="" width="64" height="64" loading="lazy">
+        <div>
+          <p style="color:#fff;font-weight:600;margin-bottom:.35rem">Organized by <a href="{{ site.organizer.url }}">{{ site.organizer.name }}</a></p>
+          <p style="margin:0">{{ site.organizer.blurb }}</p>
+        </div>
+      </div>
+      <div>
+        <h2>{{ site.name }} {{ year }}</h2>
+        <ul>
+          <li><a href="{{ url('/') }}">Home</a></li>
+          {% for item in site.nav %}<li><a href="{{ url(item.href) }}">{{ item.label }}</a></li>{% endfor %}
+          <li><a href="{{ url(site.cta.href) }}">{{ site.cta.label }}</a></li>
+          <li><a href="{{ url('datos-' ~ year ~ '.ics') }}" download>Add to calendar</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Join the community</h2>
+        <ul>
+          {% for s in site.socials %}<li><a href="{{ s.url }}" target="_blank" rel="noopener">{{ s.label }}</a></li>{% endfor %}
+        </ul>
+      </div>
+    </div>
+    <div class="site-footer__bottom">
+      <span>© {{ year }} {{ site.organizer.name }}. Everyone is welcome here.</span>
+      <span>
+        {% if not is_todo(site.organizer.code_of_conduct_url) %}<a href="{{ site.organizer.code_of_conduct_url }}">Code of conduct</a> · {% endif %}
+        {% if not is_todo(site.contact_email) %}<a href="mailto:{{ site.contact_email }}">{{ site.contact_email }}</a>{% else %}<a href="{{ site.organizer.url }}">{{ site.organizer.url | replace('https://', '') | trim('/') }}</a>{% endif %}
+      </span>
+    </div>
+  </div>
+</footer>

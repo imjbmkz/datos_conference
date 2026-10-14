@@ -1,0 +1,66 @@
+{% from "components/icons.html" import icon %}
+{% import "components/ui.html" as ui %}
+{% set full_title = (page_title ~ " · " ~ site.name ~ " " ~ year) if page_title else (site.full_name ~ " " ~ year) %}
+{% set canonical = site_url ~ (page_path if not page_path.endswith(".html") else "") %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ full_title }}</title>
+  <meta name="description" content="{{ page_description }}">
+  <link rel="canonical" href="{{ canonical }}">
+  <meta name="theme-color" content="#0b2a5b">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="{{ site.full_name }}">
+  <meta property="og:title" content="{{ full_title }}">
+  <meta property="og:description" content="{{ page_description }}">
+  <meta property="og:url" content="{{ canonical }}">
+  <meta property="og:image" content="{{ site_url }}images/og-{{ year }}.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" type="image/png" href="{{ url('favicon.png') }}">
+  <link rel="apple-touch-icon" href="{{ url('images/brand/apple-touch-icon.png') }}">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url('css/tokens.css') }}">
+  <link rel="stylesheet" href="{{ url('css/site.css') }}">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    "name": {{ (site.full_name ~ " " ~ year) | tojson }},
+    "description": {{ event.summary | tojson }},
+    "startDate": {{ event.start | tojson }},
+    "endDate": {{ event.end | tojson }},
+    "eventStatus": "https://schema.org/EventScheduled",
+    "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+    "location": {
+      "@type": "Place",
+      "name": {{ event.venue.name | tojson }},
+      "address": {{ (event.venue.address if event.venue.address_known else event.venue.area) | tojson }}
+    },
+    "image": [{{ (site_url ~ "images/og-" ~ year ~ ".png") | tojson }}],
+    "isAccessibleForFree": true,
+    "maximumAttendeeCapacity": {{ event.capacity }},
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "PHP", "url": {{ event.registration.url | tojson }}, "availability": "https://schema.org/InStock" },
+    "organizer": { "@type": "Organization", "name": {{ site.organizer.name | tojson }}, "url": {{ site.organizer.url | tojson }} }
+  }
+  </script>
+  <script src="{{ url('js/site.js') }}" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  {% include "partials/header.html" %}
+  <main id="main">
+    {% block content %}{% endblock %}
+  </main>
+  {% include "partials/footer.html" %}
+</body>
+</html>

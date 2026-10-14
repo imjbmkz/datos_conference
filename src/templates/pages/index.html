@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% import "components/ui.html" as ui %}
+{% import "components/people.html" as people %}
+{% import "components/agenda.html" as agenda %}
+{% import "components/sponsors.html" as sponsors_ui %}
+
+{% block content %}
+<section class="hero" aria-labelledby="hero-title">
+  {{ ui.pixels("pixels--a") }}
+  {{ ui.pixels("pixels--b") }}
+  <div class="container hero__inner">
+    <p class="hero__badge"><span class="dot" aria-hidden="true"></span>{{ event.edition_label }} · {{ event.admission }} · {{ event.capacity }} seats</p>
+    <h1 id="hero-title" class="visually-hidden">{{ site.full_name }} {{ year }}</h1>
+    <img class="hero__wordmark" src="{{ url('images/brand/datos-wordmark.png') }}" alt="DATOS" width="1200" height="340">
+    <p class="hero__tagline">{{ site.tagline }}</p>
+    <p class="hero__theme">{{ event.theme }}</p>
+    {{ ui.event_meta(event) }}
+    <div class="hero__actions">
+      {{ ui.button("Register on Meetup", site.cta.href, "primary", "lg", "arrow") }}
+      {{ ui.button("View schedule", "/schedule/", "secondary", "lg") }}
+    </div>
+    {{ ui.countdown(event.doors_open, "Time until doors open") }}
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    {{ ui.section_head("An evening for everyone curious about data engineering",
+        eyebrow="What to expect", lead=event.summary) }}
+    <div class="grid grid--4">
+      {% for item in event.highlights %}{{ ui.feature_card(item) }}{% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section section--tint">
+  <div class="container">
+    <div class="section__head section__head--row">
+      <div>
+        <p class="eyebrow">Speakers</p>
+        <h2>Learn from practitioners and recruiters</h2>
+        <p class="lead" style="margin:0">Talks, a career panel and community updates from people who build data platforms and hire data engineers.</p>
+      </div>
+      {{ ui.button("All speakers", "/speakers/", "secondary", icon_name="arrow") }}
+    </div>
+    <div class="grid grid--4">
+      {% for p in speaker_groups.speaker %}{{ people.speaker_card(p, interactive=False) }}{% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container split">
+    <div>
+      {{ ui.section_head("Agenda at a glance", eyebrow=event.date_label,
+          lead="Doors open at " ~ event.doors_open_dt.strftime('%I:%M %p').lstrip('0') ~ ". Two talks with Q&A, a dinner break, then the career panel.") }}
+      {{ ui.button("Full schedule", "/schedule/", "secondary", icon_name="arrow") }}
+    </div>
+    {{ agenda.agenda_glance(featured_sessions) }}
+  </div>
+</section>
+
+<section class="section section--tint section--tight">
+  <div class="container">
+    {{ ui.section_head("Made possible by", eyebrow="Sponsors & partners", align="center") }}
+    {{ sponsors_ui.logo_tiers(sponsors.tiers) }}
+  </div>
+</section>
+
+<section class="section">
+  <div class="container grid" style="gap:var(--space-5)">
+    {{ ui.cta_banner("Bring your community",
+        "DATOS is open to everyone: students, career shifters, practitioners, and fellow tech communities. Want to partner, sponsor, or bring your group along? We'd love to hear from you.",
+        [{"label": "Partner with us", "href": "/sponsors/#partner", "variant": "secondary"}], variant="soft") }}
+    {{ ui.cta_banner("Save your seat",
+        "Only " ~ event.capacity ~ " seats, and every RSVP is reviewed on Meetup. Register early so the team can confirm your spot.",
+        [{"label": "Register on Meetup", "href": site.cta.href, "variant": "light"}]) }}
+  </div>
+</section>
+{% endblock %}

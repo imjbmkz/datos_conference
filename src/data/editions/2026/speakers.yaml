@@ -1,0 +1,86 @@
+# One entry per person. `id` is used by sessions.yaml to link people to sessions.
+# photo: file name inside src/static/images/<year>/speakers/ (square, 600px+).
+#        Leave empty to show initials until the photo arrives.
+# group: speaker | host | remarks   (controls where the card appears)
+
+- id: renzi-vidal
+  name: "Renzi Vidal"
+  org: "Data Engineering Pilipinas"
+  org_short: "DEP"
+  title: ""          # TODO
+  photo: ""          # TODO
+  bio: ""            # TODO
+  group: speaker
+  links: {}
+
+- id: geoff-newell
+  name: "Geoff Newell"
+  org: "Beyond"
+  org_short: "Beyond"
+  title: ""          # TODO
+  photo: ""
+  bio: ""
+  group: speaker
+  links: {}
+
+- id: mike-bellen
+  name: "Mike Bellen"
+  org: "Data Engineering Pilipinas"
+  org_short: "DEP"
+  title: ""
+  photo: ""
+  bio: ""
+  group: speaker
+  links: {}
+
+- id: tim-nicholas
+  name: "Tim Nicholas"
+  org: "Permhunt"
+  org_short: "Permhunt"
+  title: ""
+  photo: ""
+  bio: ""
+  group: speaker
+  links: {}
+
+- id: josh-valdeleon
+  name: "Josh Valdeleon"
+  org: "Data Engineering Pilipinas"
+  org_short: "DEP"
+  title: ""
+  photo: ""
+  bio: ""
+  group: speaker
+  links:
+    linkedin: "https://www.linkedin.com/in/joshdevph"
+    github: "https://github.com/imjbmkz"
+
+- id: myk-ogbinar
+  name: "Myk Ogbinar"
+  org: "Data Engineering Pilipinas"
+  org_short: "DEP"
+  title: "Founder, Data Engineering Pilipinas"
+  photo: ""
+  bio: ""
+  group: remarks
+  links: {}
+
+- id: katherine-bulac
+  name: "Katherine Bulac"
+  org: "Data Engineering Pilipinas"
+  org_short: "DEP"
+  title: "Host"
+  photo: ""
+  bio: ""
+  group: host
+  links: {}
+
+- id: dep-project-leads
+  name: "DEP Project Leads"
+  org: "Data Engineering Pilipinas"
+  org_short: "DEP"
+  title: "Names to follow"   # TODO: list the project leads and their projects
+  photo: ""
+  bio: ""
+  group: remarks
+  links: {}

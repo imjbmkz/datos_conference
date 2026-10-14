@@ -1,0 +1,62 @@
+# Facts about this edition. Every page reads from here, so change a fact once.
+
+year: 2026
+edition_label: "Pilot run"
+theme: "Getting a Data Engineering Career in the Age of Artificial Intelligence"
+theme_short: "Getting a Data Engineering Career in the Age of AI"
+summary: >-
+  An evening of talks and a panel on cloud data engineering, AI, and building
+  a data engineering career, organized by the Data Engineering Pilipinas
+  community. Free to attend, open to everyone.
+
+# Times are Philippine Time (UTC+8). Use ISO 8601 with the +08:00 offset.
+doors_open: "2026-11-20T15:45:00+08:00"
+start: "2026-11-20T16:00:00+08:00"
+end: "2026-11-20T21:00:00+08:00"
+timezone_label: "Philippine Time (UTC+8)"
+
+venue:
+  name: "Google Philippines Headquarters"
+  area: "Bonifacio Global City, Taguig"
+  address: "TODO: full street address"   # TODO: confirm exact address and floor
+  map_query: "Google Philippines, Bonifacio Global City, Taguig"
+  notes:
+    - "Bring a valid ID for building entry."   # TODO: confirm venue entry rules
+    - "Arrive by 3:45 PM to clear security and registration."
+
+capacity: 80
+admission: "Free"
+registration:
+  provider: "Meetup"
+  # TODO: replace with the DATOS event link on Meetup
+  url: "https://www.meetup.com/data-engineering-pilipinas/"
+  requires_approval: true
+  status: "open"          # open | closed | waitlist
+  note: >-
+    Seats are limited to 80 and every RSVP is reviewed by the organizers.
+    You'll get a confirmation on Meetup once your spot is approved.
+
+livestream:
+  planned: true
+  url: ""                 # TODO: add the livestream link when available
+  note: "We're planning to livestream the talks and panel. The link will be posted here."
+
+highlights:
+  - icon: "cloud"
+    title: "Cloud data engineering"
+    text: "Start from the fundamentals of building data pipelines on Google Cloud."
+  - icon: "spark"
+    title: "AI in real pipelines"
+    text: "See an end-to-end data solution on GCP with practical AI applications."
+  - icon: "people"
+    title: "Career panel"
+    text: "Hiring, skills and career paths in data engineering, straight from practitioners and recruiters."
+  - icon: "code"
+    title: "DEP community projects"
+    text: "Updates on the open projects Data Engineering Pilipinas members are building together."
+
+reminders:
+  - "Bring a valid government or school ID."
+  - "Have your approved Meetup RSVP ready at the registration desk."
+  - "Bring a laptop if you'd like to follow along; it's optional."
+  - "Dinner break runs from 5:35 PM to 6:20 PM."   # TODO: confirm if food is provided
