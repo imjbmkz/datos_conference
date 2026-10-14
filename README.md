@@ -27,7 +27,8 @@ src/
     editions/2026/
       event.yaml              # date, venue, capacity, registration link, highlights
       sessions.yaml           # the agenda
-      speakers.yaml           # people (speakers, hosts, remarks)
+      speakers.yaml           # people on the program (speakers, hosts, remarks)
+      organizers.yaml         # organizing team on the About page
       sponsors.yaml           # sponsor tiers and logos
       faq.yaml
   templates/
@@ -40,6 +41,7 @@ src/
     css/site.css              # component styles
     js/site.js                # menu, countdown, speaker dialogs, "happening now"
     images/<year>/speakers/   # speaker photos
+    images/<year>/organizers/ # organizer photos
     images/<year>/sponsors/   # sponsor logos
 build.py
 ```
@@ -49,6 +51,24 @@ build.py
 **Add or update a speaker.** Edit `speakers.yaml`. Put a square photo (600 px or larger)
 in `src/static/images/2026/speakers/` and set `photo: their-name.jpg`.
 Until a photo is added the card shows initials.
+
+**Add someone to the organizing team.** Add a block to `organizers.yaml`; only `name` and
+`role` are required. The About page picks it up on the next build:
+
+```yaml
+- name: "Juan dela Cruz"
+  role: "Logistics"
+  org: "Data Engineering Pilipinas"
+  photo: "juan-dela-cruz.jpg"     # optional, in src/static/images/2026/organizers/
+  links:
+    linkedin: "https://www.linkedin.com/in/..."
+```
+
+Someone who is both an organizer and a speaker can reuse their speaker photo with
+`photo: "images/2026/speakers/their-photo.jpg"`.
+
+Any content file can be JSON instead of YAML (e.g. `organizers.json`); the build reads
+whichever exists.
 
 **Change the agenda.** Edit `sessions.yaml`. Times are 24-hour (`16:35`). People are
 referenced by their `id` from `speakers.yaml`. Set `featured: true` to show a session in

@@ -34,6 +34,11 @@ and optional LinkedIn / GitHub / website links.
 - Katherine Bulac (DEP), host
 - DEP Project Leads: names and the projects they'll present
 
+## Organizing team (`organizers.yaml` + photos in `src/static/images/2026/organizers/`)
+
+- The full list of organizers, each with a role title (Katherine's and Josh's roles are placeholders)
+- Optional photos and LinkedIn / GitHub links
+
 ## Sessions (`sessions.yaml`)
 
 - Abstract (2–4 sentences) for "Introduction to Cloud Data Engineering using GCP"
