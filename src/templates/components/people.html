@@ -63,7 +63,8 @@
       </div>
     </div>
     {% if person.bio %}
-    <p>{{ person.bio }}</p>
+    {# Each line of the bio becomes its own paragraph; blank lines are ignored. #}
+    {% for para in person.bio.splitlines() if para.strip() %}<p>{{ para.strip() }}</p>{% endfor %}
     {% else %}
     <p class="todo">Bio coming soon.</p>
     {% endif %}
