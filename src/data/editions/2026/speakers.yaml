@@ -31,7 +31,10 @@
   org_short: "DEP"
   title: "Sr. AI and Data Engineer"
   photo: "renzi_vidal.jpg"
-  bio: "Seasoned Sr. AI and Data Engineer with 13+ years of progressive experience in data architecture, data pipelines, and enterprise data solutions across multiple platforms. GCP specialist recognized by management as an AI Automation Pioneer for leading the department's Agentic AI transformation as an Agent Builder. Combines deep data engineering expertise with AI architecture oversight to design production solutions. He holds Google Generative AI Leader and Associate Data Practitioner certifications and is a 2023 Luminaries Awardee, recognizing the best of the best associates in Manila who exemplified excellence and made a significant impact to the business."
+  bio: |
+    Seasoned Sr. AI and Data Engineer with 13+ years of progressive experience in data architecture, data pipelines, and enterprise data solutions across multiple platforms.
+    GCP specialist recognized by management as an AI Automation Pioneer for leading the department's Agentic AI transformation as an Agent Builder. Combines deep data engineering expertise with AI architecture oversight to design production solutions.
+    He holds Google Generative AI Leader and Associate Data Practitioner certifications and is a 2023 Luminaries Awardee, recognizing the best of the best associates in Manila who exemplified excellence and made a significant impact to the business.
   group: speaker
   links: 
     linkedin: "https://www.linkedin.com/in/ultrenz-vidal/"
@@ -55,7 +58,10 @@
   org_short: "DEP"
   title: "Founder, Data Engineering Pilipinas"
   photo: "myk_ogbinar.jpg"
-  bio: "Myk Ogbinar is head of data and analytics at San Miguel Corporation, where he leads enterprise-wide data, analytics and AI initiatives. He has helped organizations in IT, retail, energy, telecommunications, banking and conglomerates use data to improve customer engagement, marketing and operations. He holds a computer science degree, an MBA and a master of engineering in AI from UP Diliman, and is now pursuing a PhD. As founder of Data Engineering Pilipinas, he has built a community that makes data skills and open-source tools more accessible. He also mentors women in the FTW Foundation's Data Science Bootcamp."
+  bio: |
+    Myk Ogbinar is head of data and analytics at San Miguel Corporation, where he leads enterprise-wide data, analytics and AI initiatives.
+    He has helped organizations in IT, retail, energy, telecommunications, banking and conglomerates use data to improve customer engagement, marketing and operations. He holds a computer science degree, an MBA and a master of engineering in AI from UP Diliman, and is now pursuing a PhD.
+    As founder of Data Engineering Pilipinas, he has built a community that makes data skills and open-source tools more accessible. He also mentors women in the FTW Foundation's Data Science Bootcamp.
   group: remarks
   links:
     linkedin: "https://www.linkedin.com/in/ogbinar/"

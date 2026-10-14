@@ -2,7 +2,8 @@
 <header class="site-header">
   <div class="container site-header__inner">
     <a class="site-header__brand" href="{{ url('/') }}" aria-label="{{ site.name }} home">
-      <img src="{{ url('images/brand/datos-wordmark.png') }}" alt="{{ site.name }}" width="105" height="30">
+      <img class="logo-light" src="{{ url('images/brand/datos-wordmark.png') }}" alt="{{ site.name }}" width="105" height="30">
+      <img class="logo-dark" src="{{ url('images/brand/datos-wordmark-dark.png') }}" alt="{{ site.name }}" width="105" height="30">
       <span>{{ site.tagline }}</span>
     </a>
     <nav class="site-nav" aria-label="Main">
@@ -11,6 +12,9 @@
       {% endfor %}
     </nav>
     <a class="btn btn--primary" href="{{ url(site.cta.href) }}"{% if page_key == 'register' %} aria-current="page"{% endif %}>{{ site.cta.label }}</a>
+    <button class="theme-toggle" type="button" aria-label="Switch to dark mode" title="Switch theme">
+      <span class="icon-sun">{{ icon("sun") }}</span><span class="icon-moon">{{ icon("moon") }}</span>
+    </button>
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-drawer" aria-label="Open menu">
       <span class="icon-open">{{ icon("menu") }}</span><span class="icon-close" hidden>{{ icon("close") }}</span>
     </button>
