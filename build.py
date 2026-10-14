@@ -61,6 +61,21 @@ def load_yaml(path: Path):
         raise ContentError(f"Missing content file: {path.relative_to(ROOT)}") from exc
 
 
+def load_data(folder: Path, stem: str, required: bool = True):
+    """Load <stem>.yaml, <stem>.yml or <stem>.json from a folder (JSON is valid YAML)."""
+    for ext in (".yaml", ".yml", ".json"):
+        path = folder / f"{stem}{ext}"
+        if path.exists():
+            return load_yaml(path)
+    if required:
+        raise ContentError(f"Missing content file: {(folder / stem).relative_to(ROOT)}.yaml (or .json)")
+    return None
+
+
+def slugify(text: str) -> str:
+    return "-".join("".join(c.lower() if c.isalnum() else " " for c in text).split())
+
+
 def require(obj: dict, keys: list[str], where: str) -> None:
     missing = [k for k in keys if obj.get(k) in (None, "")]
     if missing:
@@ -81,11 +96,31 @@ def load_content() -> dict:
 
     year = str(site["current_edition"])
     edir = DATA / "editions" / year
-    event = load_yaml(edir / "event.yaml")
-    speakers = load_yaml(edir / "speakers.yaml") or []
-    sessions = load_yaml(edir / "sessions.yaml") or []
-    sponsors = load_yaml(edir / "sponsors.yaml") or {}
-    faq = load_yaml(edir / "faq.yaml") or []
+    event = load_data(edir, "event")
+    speakers = load_data(edir, "speakers") or []
+    sessions = load_data(edir, "sessions") or []
+    sponsors = load_data(edir, "sponsors") or {}
+    faq = load_data(edir, "faq", required=False) or []
+    organizers = load_data(edir, "organizers", required=False) or []
+
+    # --- organizers ----------------------------------------------------------
+    seen: set[str] = set()
+    for i, person in enumerate(organizers):
+        require(person, ["name", "role"], f"organizers entry {i + 1}")
+        person["id"] = person.get("id") or slugify(person["name"])
+        if person["id"] in seen:
+            raise ContentError(f"organizers: duplicate person {person['name']}")
+        seen.add(person["id"])
+        person["org"] = person.get("org") or ""
+        person["links"] = person.get("links") or {}
+        person["initials"] = "".join(w[0] for w in person["name"].split()[:2]).upper()
+        person["photo_path"] = None
+        photo = person.get("photo")
+        if photo:
+            rel = photo if photo.startswith("images/") else f"images/{year}/organizers/{photo}"
+            if not (STATIC / rel).exists():
+                raise ContentError(f"organizers {person['name']}: photo not found at src/static/{rel}")
+            person["photo_path"] = rel
 
     # --- event -------------------------------------------------------------
     require(event, ["year", "theme", "start", "end", "doors_open", "venue", "capacity", "registration"], "event.yaml")
@@ -202,6 +237,7 @@ def load_content() -> dict:
         "featured_sessions": [s for s in sessions if s.get("featured")],
         "sponsors": sponsors,
         "faq": faq,
+        "organizers": organizers,
     }
 
 

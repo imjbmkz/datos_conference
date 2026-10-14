@@ -452,3 +452,14 @@ button.speaker-card:hover { transform: translateY(-3px); box-shadow: var(--shado
 @media (max-width: 860px) { .page-header .pixels { display: none; } }
 .grid--stats { grid-template-columns: repeat(auto-fit, minmax(min(100%, 160px), 1fr)); gap: var(--space-4); }
 @media (max-width: 560px) { .grid--stats { grid-template-columns: 1fr 1fr; } .stat { padding: var(--space-4); } }
+
+/* Organizer card links */
+.speaker-card__links { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--space-3); margin: var(--space-2) 0 0; font-size: var(--text-xs); font-weight: 600; }
+.speaker-card__links a { text-decoration: none; }
+.speaker-card__links a:hover { text-decoration: underline; }
+@media (max-width: 560px) {
+  .grid--people { grid-template-columns: 1fr 1fr; gap: var(--space-3); }
+  .grid--people .speaker-card { padding: var(--space-4) var(--space-2); }
+  .grid--people .avatar:not(.avatar--sm):not(.avatar--lg) { --size: 76px; }
+  .grid--people .speaker-card h3 { font-size: var(--text-base); }
+}

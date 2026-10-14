@@ -56,10 +56,8 @@
   <div class="container">
     {{ ui.section_head("The people running the show", eyebrow="Organizing team",
         lead="DATOS is put together by Data Engineering Pilipinas volunteers.") }}
-    <div class="grid grid--4">
-      {% for p in speaker_groups.host + speaker_groups.remarks %}
-      {% if p.id != "dep-project-leads" %}{{ people.speaker_card(p, interactive=False) }}{% endif %}
-      {% endfor %}
+    <div class="grid grid--4 grid--people">
+      {% for p in organizers %}{{ people.organizer_card(p) }}{% endfor %}
     </div>
   </div>
 </section>

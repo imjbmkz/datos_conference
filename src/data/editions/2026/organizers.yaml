@@ -1,0 +1,37 @@
+# The organizing team, shown on the About page in this order.
+# To add someone, copy a block and fill it in. Only `name` and `role` are required.
+#
+# photo: a file name inside src/static/images/2026/organizers/ (square, 400px+),
+#        or a path starting with "images/" to reuse a photo from elsewhere,
+#        e.g. "images/2026/speakers/renzi-vidal.jpg". Leave empty to show initials.
+# links: any of linkedin, github, facebook, website.
+#
+# This file can also be JSON (organizers.json) if that's easier for you.
+
+- name: "Myk Ogbinar"
+  role: "Founder"
+  org: "Data Engineering Pilipinas"
+  photo: ""
+  links: {}
+
+- name: "Katherine Bulac"
+  role: "Program host"          # TODO: confirm role title
+  org: "Data Engineering Pilipinas"
+  photo: ""
+  links: {}
+
+- name: "Josh Valdeleon"
+  role: "Organizer"             # TODO: confirm role title
+  org: "Data Engineering Pilipinas"
+  photo: ""
+  links:
+    linkedin: "https://www.linkedin.com/in/joshdevph"
+    github: "https://github.com/imjbmkz"
+
+# Example of a new organizer:
+# - name: "Juan dela Cruz"
+#   role: "Logistics"
+#   org: "Data Engineering Pilipinas"
+#   photo: "juan-dela-cruz.jpg"
+#   links:
+#     linkedin: "https://www.linkedin.com/in/..."
