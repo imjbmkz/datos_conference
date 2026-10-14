@@ -1,0 +1,26 @@
+{# Sponsor logo components. Import with: {% import "components/sponsors.html" as sponsors_ui %} #}
+
+{# One sponsor tile: logo if available, otherwise the name as text. #}
+{% macro logo_tile(sp) -%}
+{% set inner %}
+{%- if sp.logo_path -%}<img src="{{ url(sp.logo_path) }}" alt="{{ sp.name }}" loading="lazy">
+{%- else -%}<span class="logo-text">{{ sp.name }}</span>{%- endif -%}
+{% endset %}
+{% if sp.url %}
+<a href="{{ sp.url }}" target="_blank" rel="noopener" title="{{ sp.name }}">{{ inner }}</a>
+{% else %}
+<div class="logo-tile">{{ inner }}</div>
+{% endif %}
+{%- endmacro %}
+
+{# All tiers. #}
+{% macro logo_tiers(tiers) -%}
+{% for tier in tiers %}
+<div class="logo-tier reveal">
+  <h3 class="logo-tier__name">{{ tier.name }}</h3>
+  <ul class="logo-grid logo-grid--{{ tier.size }}">
+    {% for sp in tier.sponsors %}<li>{{ logo_tile(sp) }}</li>{% endfor %}
+  </ul>
+</div>
+{% endfor %}
+{%- endmacro %}

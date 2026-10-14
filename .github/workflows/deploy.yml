@@ -1,0 +1,44 @@
+name: Build and deploy
+
+# Builds the site on every pull request (to catch content errors early)
+# and publishes it to the gh-pages branch on every push to main.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      # Project-page URL for now. Once datos.dataengineering.ph points here, set the
+      # repository variables BASE_PATH="/", SITE_URL="https://datos.dataengineering.ph"
+      # and CNAME="datos.dataengineering.ph" (Settings > Secrets and variables > Actions > Variables).
+      BASE_PATH: ${{ vars.BASE_PATH || '/datos_conference/' }}
+      SITE_URL: ${{ vars.SITE_URL || 'https://imjbmkz.github.io' }}
+      CNAME: ${{ vars.CNAME }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - run: python build.py
+      - name: Publish to gh-pages
+        if: github.event_name != 'pull_request'
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: gh-pages
+          force_orphan: true

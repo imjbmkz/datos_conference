@@ -1,0 +1,25 @@
+# Sponsor tiers are listed in display order; `size` sets the logo size (lg | md | sm).
+# logo: a file name inside src/static/images/<year>/sponsors/ (SVG or transparent PNG),
+#       or a path starting with "images/" for a shared file.
+#       Leave empty to show the name as text until the logo arrives.
+
+call_for_sponsors:
+  enabled: true
+  text: >-
+    DATOS brings together 80 data practitioners, students and career shifters from
+    one of the largest data communities in the Philippines. Partner with us to
+    support the community and meet the people building data platforms here.
+
+tiers:
+  - name: "Sponsors"        # TODO: rename / split into tiers once the list is final
+    size: lg
+    sponsors:
+      - { name: "Permhunt", url: "", logo: "" }   # TODO: logo + URL
+      - { name: "Beyond", url: "", logo: "" }     # TODO: logo + URL
+
+  - name: "Organized by"
+    size: md
+    sponsors:
+      - name: "Data Engineering Pilipinas"
+        url: "https://dataengineering.ph/"
+        logo: "images/brand/dep-logo.png"

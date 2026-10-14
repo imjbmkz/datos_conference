@@ -1,0 +1,29 @@
+{% from "components/icons.html" import icon %}
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="site-header__brand" href="{{ url('/') }}" aria-label="{{ site.name }} home">
+      <img src="{{ url('images/brand/datos-wordmark.png') }}" alt="{{ site.name }}" width="106" height="30">
+      <span>{{ site.tagline }}</span>
+    </a>
+    <nav class="site-nav" aria-label="Main">
+      {% for item in site.nav %}
+      <a href="{{ url(item.href) }}"{% if item.href.strip('/') == page_key %} aria-current="page"{% endif %}>{{ item.label }}</a>
+      {% endfor %}
+    </nav>
+    <a class="btn btn--primary" href="{{ url(site.cta.href) }}"{% if page_key == 'register' %} aria-current="page"{% endif %}>{{ site.cta.label }}</a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-drawer" aria-label="Open menu">
+      <span class="icon-open">{{ icon("menu") }}</span><span class="icon-close" hidden>{{ icon("close") }}</span>
+    </button>
+  </div>
+</header>
+<div class="nav-drawer" id="nav-drawer">
+  <nav aria-label="Mobile">
+    <ul>
+      <li><a href="{{ url('/') }}"{% if page_key == 'home' %} aria-current="page"{% endif %}>Home</a></li>
+      {% for item in site.nav %}
+      <li><a href="{{ url(item.href) }}"{% if item.href.strip('/') == page_key %} aria-current="page"{% endif %}>{{ item.label }}</a></li>
+      {% endfor %}
+    </ul>
+    <a class="btn btn--primary btn--lg" href="{{ url(site.cta.href) }}">{{ site.cta.label }} for free</a>
+  </nav>
+</div>

@@ -1,0 +1,73 @@
+{# Speaker components. Import with: {% import "components/people.html" as people %} #}
+{% from "components/icons.html" import icon %}
+{% import "components/ui.html" as ui %}
+
+{# Photo, or initials until a photo is added. size: sm | md | lg #}
+{% macro avatar(person, size="md") -%}
+<span class="avatar{% if size != 'md' %} avatar--{{ size }}{% endif %}">
+  {%- if person.photo_path -%}
+  <img src="{{ url(person.photo_path) }}" alt="" loading="lazy" width="280" height="280">
+  {%- else -%}
+  <span aria-hidden="true">{{ person.initials }}</span>
+  {%- endif -%}
+</span>
+{%- endmacro %}
+
+{# One line describing what the person does at DATOS. #}
+{% macro role_line(person) -%}
+{%- if person.title and not is_todo(person.title) -%}{{ person.title }}{%- else -%}{{ person.org }}{%- endif -%}
+{%- endmacro %}
+
+{# Card. With interactive=True it opens the speaker's detail dialog. #}
+{% macro speaker_card(person, interactive=True) -%}
+{% if interactive %}
+<button type="button" class="speaker-card reveal" data-dialog="dlg-{{ person.id }}" aria-haspopup="dialog">
+{% else %}
+<a class="speaker-card reveal" href="{{ url('/speakers/#' ~ person.id) }}" style="text-decoration:none">
+{% endif %}
+  {{ avatar(person) }}
+  <h3>{{ person.name }}</h3>
+  <p class="speaker-card__role">{{ role_line(person) }}</p>
+  {{ ui.badge(person.org_short) }}
+  <span class="speaker-card__more">{{ "View profile" if interactive else "See sessions" }}</span>
+{% if interactive %}</button>{% else %}</a>{% endif %}
+{%- endmacro %}
+
+{# Detail dialog: bio, sessions, links. #}
+{% macro speaker_dialog(person) -%}
+<dialog class="speaker-dialog" id="dlg-{{ person.id }}" aria-labelledby="dlg-{{ person.id }}-name">
+  <div class="speaker-dialog__body">
+    <button class="speaker-dialog__close" type="button" data-close aria-label="Close">{{ icon("close") }}</button>
+    <div class="speaker-dialog__top">
+      {{ avatar(person, "lg") }}
+      <div>
+        <h2 id="dlg-{{ person.id }}-name">{{ person.name }}</h2>
+        <p class="muted" style="margin:0 0 .5rem">{{ role_line(person) }}</p>
+        {% if person.title and not is_todo(person.title) %}{{ ui.badge(person.org) }}{% endif %}
+      </div>
+    </div>
+    {% if person.bio %}
+    <p>{{ person.bio }}</p>
+    {% else %}
+    <p class="todo">Bio coming soon.</p>
+    {% endif %}
+    {% if person.sessions %}
+    <div>
+      <h3>At DATOS</h3>
+      <ul class="speaker-dialog__sessions">
+        {% for item in person.sessions %}
+        <li><b>{{ item.role }}</b> · {{ item.session.start_label }}<br>{{ item.session.title }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+    {% if person.links %}
+    <div class="link-row">
+      {% for name, href in person.links.items() %}
+      {{ ui.button(name | capitalize, href, "secondary", external=True) }}
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+</dialog>
+{%- endmacro %}

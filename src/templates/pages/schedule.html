@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% import "components/ui.html" as ui %}
+{% import "components/agenda.html" as agenda %}
+
+{% block content %}
+<header class="page-header">
+  {{ ui.pixels("pixels--a") }}
+  <div class="container">
+    <p class="eyebrow">Schedule</p>
+    <h1>{{ event.weekday }}, {{ event.date_label }}</h1>
+    <p class="lead">All times are in {{ event.timezone_label }}. Doors open at {{ event.doors_open_dt.strftime('%I:%M %p').lstrip('0') }} at {{ event.venue.name }}.</p>
+    <div class="link-row" style="margin-top:var(--space-5)">
+      <a class="btn btn--primary" href="{{ url('datos-' ~ year ~ '.ics') }}" download>Add to calendar</a>
+      {{ ui.button("Register on Meetup", site.cta.href, "secondary", icon_name="arrow") }}
+    </div>
+  </div>
+</header>
+
+<section class="section">
+  <div class="container" style="max-width:920px">
+    {{ agenda.agenda_timeline(sessions) }}
+    {% if event.livestream.planned %}
+    <div style="margin-top:var(--space-6)">
+      {% if event.livestream.url %}
+      {{ ui.button("Watch the livestream", event.livestream.url, "primary", external=True) }}
+      {% else %}
+      {{ ui.notice(event.livestream.note, "video") }}
+      {% endif %}
+    </div>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

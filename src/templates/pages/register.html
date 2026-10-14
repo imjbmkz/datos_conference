@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% import "components/ui.html" as ui %}
+
+{% block content %}
+<header class="page-header">
+  {{ ui.pixels("pixels--a") }}
+  <div class="container">
+    <p class="eyebrow">Register</p>
+    <h1>Save your seat at DATOS</h1>
+    <p class="lead">{{ event.admission }} to attend. Registration runs through {{ event.registration.provider }}, and every RSVP is reviewed by the organizers.</p>
+  </div>
+</header>
+
+<section class="section">
+  <div class="container split">
+    <div>
+      {{ ui.section_head("How registration works", eyebrow="Three steps") }}
+      <ol class="steps">
+        <li><div><h3>RSVP on {{ event.registration.provider }}</h3><p>Open the DATOS event on {{ event.registration.provider }} and answer the short registration questions.</p></div></li>
+        <li><div><h3>Wait for approval</h3><p>{{ event.registration.note }}</p></div></li>
+        <li><div><h3>Show up and say hi</h3><p>Bring your ID and arrive by {{ event.doors_open_dt.strftime('%I:%M %p').lstrip('0') }} at {{ event.venue.name }}.</p></div></li>
+      </ol>
+
+      <h3 style="margin-top:var(--space-7)">Reminders</h3>
+      <ul class="check-list">
+        {% for r in event.reminders %}<li>{{ r }}</li>{% endfor %}
+      </ul>
+    </div>
+
+    <aside class="register-panel" aria-labelledby="reg-title">
+      <h2 id="reg-title" class="visually-hidden">Registration</h2>
+      <div class="register-panel__seats"><b>{{ event.capacity }}</b><span class="muted">seats · {{ event.admission | lower }}</span></div>
+      <p class="muted" style="margin-bottom:var(--space-5)">Approval required. If seats fill up, you'll join the waitlist on {{ event.registration.provider }}.</p>
+      {{ ui.event_meta(event, "left") }}
+      {% if event.registration.status == "closed" %}
+      <p class="notice" style="margin-top:var(--space-5)">Registration is closed. Thanks for the interest, and see you at the next DATOS!</p>
+      {% else %}
+      {{ ui.button(("Join the waitlist on " if event.registration.status == "waitlist" else "Register on ") ~ event.registration.provider,
+          event.registration.url, "primary", "lg", external=True) }}
+      {% endif %}
+      <a class="btn btn--ghost" style="margin-top:var(--space-2)" href="{{ url('datos-' ~ year ~ '.ics') }}" download>Add to calendar</a>
+      {% if event.livestream.planned %}
+      <div style="margin-top:var(--space-4)">{{ ui.notice("Can't make it in person? " ~ event.livestream.note, "video") }}</div>
+      {% endif %}
+      <p class="muted" style="font-size:var(--text-xs);margin:var(--space-4) 0 0">Your registration details are collected by {{ event.registration.provider }} and used by Data Engineering Pilipinas only to manage attendance, in line with the Data Privacy Act of 2012.</p>
+    </aside>
+  </div>
+</section>
+{% endblock %}

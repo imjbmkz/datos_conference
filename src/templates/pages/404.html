@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% import "components/ui.html" as ui %}
+
+{% block content %}
+<section class="section">
+  <div class="container" style="text-align:center;max-width:640px">
+    <p class="eyebrow">404</p>
+    <h1>We couldn't find that page</h1>
+    <p class="lead">The link may be old, or the page may have moved.</p>
+    <div class="hero__actions">
+      {{ ui.button("Back to home", "/", "primary") }}
+      {{ ui.button("See the schedule", "/schedule/", "secondary") }}
+    </div>
+  </div>
+</section>
+{% endblock %}

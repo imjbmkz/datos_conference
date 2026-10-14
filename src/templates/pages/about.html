@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% import "components/ui.html" as ui %}
+{% import "components/people.html" as people %}
+
+{% block content %}
+<header class="page-header">
+  {{ ui.pixels("pixels--a") }}
+  <div class="container">
+    <p class="eyebrow">About {{ site.name }}</p>
+    <h1>A conference by and for the Filipino data community</h1>
+    <p class="lead">{{ site.full_name }} is a community-run event from Data Engineering Pilipinas. {{ year }} is our {{ event.edition_label | lower }}.</p>
+  </div>
+</header>
+
+<section class="section">
+  <div class="container split">
+    <div>
+      {{ ui.section_head("Why DATOS", eyebrow="The idea") }}
+      <p><em>Datos</em> is Filipino for data. DATOS brings people from our online community into one room to learn about the theories, practices and real-world applications of data engineering.</p>
+      <p>This year's theme is <strong>“{{ event.theme }}.”</strong> As AI changes how data platforms are built, we want to help people understand what skills matter and how to get started or grow in the field.</p>
+      <p>The event features talks on cloud data engineering and AI, and a panel discussion that brings together different perspectives on how AI is shaping the field and the careers of data professionals.</p>
+    </div>
+    <div class="card" style="padding:var(--space-6)">
+      <h3>Who should attend</h3>
+      <ul class="check-list">
+        <li>Students exploring a career in data</li>
+        <li>Career shifters moving into data engineering</li>
+        <li>Data analysts, data scientists and software engineers</li>
+        <li>Data engineers and AI/ML engineers who want to compare notes</li>
+        <li>Hiring managers and recruiters building data teams</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section section--tint">
+  <div class="container">
+    <div class="split" style="align-items:center">
+      <div>
+        <p class="eyebrow">The organizer</p>
+        <h2>{{ site.organizer.name }}</h2>
+        <p class="lead">{{ site.organizer.blurb }}</p>
+        <div class="link-row">
+          {{ ui.button("Visit dataengineering.ph", site.organizer.url, "secondary", external=True) }}
+          {{ ui.button("Join on Discord", site.socials | selectattr("label", "equalto", "Discord") | map(attribute="url") | first, "ghost", external=True) }}
+        </div>
+      </div>
+      <div class="grid grid--stats">
+        {% for s in site.community_stats %}{{ ui.stat(s) }}{% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    {{ ui.section_head("The people running the show", eyebrow="Organizing team",
+        lead="DATOS is put together by Data Engineering Pilipinas volunteers.") }}
+    <div class="grid grid--4">
+      {% for p in speaker_groups.host + speaker_groups.remarks %}
+      {% if p.id != "dep-project-leads" %}{{ people.speaker_card(p, interactive=False) }}{% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section section--tint" id="venue">
+  <div class="container split">
+    <div>
+      {{ ui.section_head("Venue", eyebrow="Getting there") }}
+      <h3 style="font-size:var(--text-xl)">{{ event.venue.name }}</h3>
+      <p class="lead">{{ event.venue.address if event.venue.address_known else event.venue.area }}</p>
+      {{ ui.event_meta(event, "left") }}
+      <h3 style="margin-top:var(--space-6)">Before you go</h3>
+      <ul class="check-list">
+        {% for note in event.venue.notes %}<li>{{ note }}</li>{% endfor %}
+      </ul>
+    </div>
+    {{ ui.map_embed(event.venue.map_query, "Map to " ~ event.venue.name) }}
+  </div>
+</section>
+
+<section class="section" id="code-of-conduct">
+  <div class="container split">
+    <div>
+      {{ ui.section_head("Code of conduct", eyebrow="A welcoming space") }}
+      <p>DATOS follows the Data Engineering Pilipinas code of conduct. We want everyone to feel safe and welcome, whatever their background or experience level.</p>
+      <p>Be kind, be respectful, and help each other learn. Harassment of any kind isn't tolerated. If something makes you uncomfortable, talk to any organizer at the event.</p>
+      {% if not is_todo(site.organizer.code_of_conduct_url) %}
+      {{ ui.button("Read the full code of conduct", site.organizer.code_of_conduct_url, "secondary", external=True) }}
+      {% endif %}
+    </div>
+    <div>
+      {{ ui.section_head("Questions", eyebrow="FAQ", level=2) }}
+      {{ ui.faq_list(faq) }}
+    </div>
+  </div>
+</section>
+{% endblock %}

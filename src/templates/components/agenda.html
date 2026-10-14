@@ -1,0 +1,63 @@
+{# Agenda components. Import with: {% import "components/agenda.html" as agenda %} #}
+{% import "components/ui.html" as ui %}
+{% import "components/people.html" as people %}
+
+{% set type_labels = {"talk": "Talk", "panel": "Panel", "remarks": "Remarks", "break": "Break", "logistics": "Logistics"} %}
+
+{# One row of the full schedule timeline. #}
+{% macro agenda_item(s) -%}
+{% set minor = s.type in ["break", "logistics"] %}
+<li class="agenda-item agenda-item--{{ s.type }} {{ 'agenda-item--minor' if minor else 'agenda-item--major' }}" id="{{ s.id }}"
+    data-start="{{ s.start_iso }}" data-end="{{ s.end_iso }}">
+  <div class="agenda-item__time">
+    <b><time datetime="{{ s.start_iso }}">{{ s.start_label }}</time></b>
+    <span>{{ s.minutes }} min</span>
+  </div>
+  <div class="agenda-item__body">
+    <div class="agenda-item__meta">
+      {{ ui.badge(type_labels[s.type], s.type) }}
+      <span class="badge now-pill">Happening now</span>
+      <span>{{ s.start_label }} – {{ s.end_label }}</span>
+      {% if s.has_qa %}<span>· with Q&amp;A</span>{% endif %}
+    </div>
+    <h3>{{ s.title }}</h3>
+    {% if s.abstract %}<p class="agenda-item__abstract">{{ s.abstract }}</p>{% endif %}
+    {% if s.people or s.moderator_person %}
+    <ul class="agenda-item__people">
+      {% for p in s.people %}
+      <li>{{ people.avatar(p, "sm") }}<a href="{{ url('/speakers/#' ~ p.id) }}">{{ p.name }}</a> <small>{{ p.org_short }}</small></li>
+      {% endfor %}
+      {% if s.moderator_person %}
+      {% set m = s.moderator_person %}
+      <li>{{ people.avatar(m, "sm") }}<a href="{{ url('/speakers/#' ~ m.id) }}">{{ m.name }}</a> <small>Moderator · {{ m.org_short }}</small></li>
+      {% endif %}
+    </ul>
+    {% endif %}
+  </div>
+</li>
+{%- endmacro %}
+
+{# Full schedule. #}
+{% macro agenda_timeline(sessions) -%}
+<ol class="agenda">
+  {% for s in sessions %}{{ agenda_item(s) }}{% endfor %}
+</ol>
+{%- endmacro %}
+
+{# Compact list of key sessions for the home page. #}
+{% macro agenda_glance(sessions) -%}
+<ol class="agenda-glance">
+  {% for s in sessions %}
+  <li class="reveal">
+    <time datetime="{{ s.start_iso }}">{{ s.start_label }} – {{ s.end_label }}</time>
+    <div>
+      <h3>{{ s.title }}</h3>
+      <p>
+        {%- for p in s.people %}{{ p.name }}{% if not loop.last %}, {% endif %}{% endfor %}
+        {%- if s.moderator_person %} · moderated by {{ s.moderator_person.name }}{% endif -%}
+      </p>
+    </div>
+  </li>
+  {% endfor %}
+</ol>
+{%- endmacro %}

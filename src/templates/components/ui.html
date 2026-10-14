@@ -1,0 +1,106 @@
+{# Small, general-purpose building blocks used across pages.
+   Import with: {% import "components/ui.html" as ui %} #}
+{% from "components/icons.html" import icon %}
+
+{# Button / link styled as a button.
+   variant: primary | secondary | ghost | light ; size: md | lg #}
+{% macro button(label, href, variant="primary", size="md", icon_name=None, external=False) -%}
+<a class="btn btn--{{ variant }}{% if size == 'lg' %} btn--lg{% endif %}" href="{{ url(href) }}"{% if external %} target="_blank" rel="noopener"{% endif %}>
+  <span>{{ label }}</span>{% if icon_name %}{{ icon(icon_name) }}{% elif external %}{{ icon("external") }}{% endif %}
+</a>
+{%- endmacro %}
+
+{# Heading block at the top of a section. align: left | center #}
+{% macro section_head(title, eyebrow=None, lead=None, align="left", level=2) -%}
+<div class="section__head{% if align == 'center' %} section__head--center{% endif %}">
+  {% if eyebrow %}<p class="eyebrow">{{ eyebrow }}</p>{% endif %}
+  <h{{ level }}>{{ title }}</h{{ level }}>
+  {% if lead %}<p class="lead">{{ lead }}</p>{% endif %}
+</div>
+{%- endmacro %}
+
+{# Session type / organization badge. #}
+{% macro badge(label, variant="org") -%}
+<span class="badge badge--{{ variant }}">{{ label }}</span>
+{%- endmacro %}
+
+{# Decorative pixel squares, echoing the "S" in the DATOS logo. #}
+{% macro pixels(extra_class="") -%}
+<div class="pixels {{ extra_class }}" aria-hidden="true">
+  <i class="o"></i><i class="o"></i><i></i><i class="o"></i>
+  <i class="o"></i><i></i><i></i><i></i>
+  <i></i><i class="o"></i><i></i><i class="o"></i>
+  <i class="o"></i><i></i><i class="o"></i><i></i>
+</div>
+{%- endmacro %}
+
+{# Date / time / venue chips. #}
+{% macro event_meta(event, align="center") -%}
+<ul class="event-meta{% if align == 'left' %} event-meta--left{% endif %}">
+  <li>{{ icon("calendar") }}<div><strong>{{ event.date_label }}</strong><span>{{ event.weekday }}</span></div></li>
+  <li>{{ icon("clock") }}<div><strong>{{ event.time_label }}</strong><span>{{ event.program_label }}</span></div></li>
+  <li>{{ icon("pin") }}<div><strong>{{ event.venue.name }}</strong><span>{{ event.venue.area }}</span></div></li>
+</ul>
+{%- endmacro %}
+
+{# Countdown to a datetime (ISO 8601). Hidden until JS fills it in and after the time passes. #}
+{% macro countdown(target_iso, label) -%}
+<div class="countdown" data-countdown="{{ target_iso }}" hidden role="timer" aria-label="{{ label }}">
+  <div class="countdown__unit"><b data-unit="d">0</b><small>days</small></div>
+  <div class="countdown__unit"><b data-unit="h">00</b><small>hours</small></div>
+  <div class="countdown__unit"><b data-unit="m">00</b><small>mins</small></div>
+  <div class="countdown__unit"><b data-unit="s">00</b><small>secs</small></div>
+</div>
+{%- endmacro %}
+
+{# Icon + title + text card. #}
+{% macro feature_card(item) -%}
+<article class="card feature-card reveal">
+  <div class="feature-card__icon">{{ icon(item.icon) }}</div>
+  <h3>{{ item.title }}</h3>
+  <p>{{ item.text }}</p>
+</article>
+{%- endmacro %}
+
+{# Big number + label. #}
+{% macro stat(item) -%}
+<div class="stat reveal"><b>{{ item.value }}</b><span>{{ item.label }}</span></div>
+{%- endmacro %}
+
+{# Full-width call to action. variant: dark | soft #}
+{% macro cta_banner(title, text, actions, variant="dark") -%}
+<div class="cta-banner{% if variant == 'soft' %} cta-banner--soft{% endif %} reveal">
+  <div>
+    <h2>{{ title }}</h2>
+    <p>{{ text }}</p>
+  </div>
+  <div class="cta-banner__actions">
+    {% for a in actions %}{{ button(a.label, a.href, a.variant | default("light"), "lg", external=a.external | default(False)) }}{% endfor %}
+  </div>
+</div>
+{%- endmacro %}
+
+{# FAQ accordion built on <details>, no JS needed. #}
+{% macro faq_list(items) -%}
+<div class="faq">
+  {% for item in items %}
+  <details{% if loop.first %} open{% endif %}>
+    <summary>{{ item.q }}</summary>
+    <p>{{ item.a }}</p>
+  </details>
+  {% endfor %}
+</div>
+{%- endmacro %}
+
+{# Google Maps embed (no API key needed). #}
+{% macro map_embed(query, title) -%}
+<div class="map-embed">
+  <iframe title="{{ title }}" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+    src="https://maps.google.com/maps?q={{ query | urlencode }}&z=16&output=embed"></iframe>
+</div>
+{%- endmacro %}
+
+{# Small info box. #}
+{% macro notice(text, icon_name="info") -%}
+<p class="notice">{{ icon(icon_name) }}<span>{{ text }}</span></p>
+{%- endmacro %}
