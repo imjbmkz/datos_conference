@@ -1,6 +1,7 @@
 {# Speaker components. Import with: {% import "components/people.html" as people %} #}
 {% from "components/icons.html" import icon %}
 {% import "components/ui.html" as ui %}
+{% set link_labels = {"linkedin": "LinkedIn", "github": "GitHub", "facebook": "Facebook", "website": "Website", "x": "X", "youtube": "YouTube"} %}
 
 {# Photo, or initials until a photo is added. size: sm | md | lg #}
 {% macro avatar(person, size="md") -%}
@@ -31,6 +32,21 @@
   {{ ui.badge(person.org_short) }}
   <span class="speaker-card__more">{{ "View profile" if interactive else "See sessions" }}</span>
 {% if interactive %}</button>{% else %}</a>{% endif %}
+{%- endmacro %}
+
+{# Organizing team member: photo, name, role, optional links. #}
+{% macro organizer_card(person) -%}
+<article class="speaker-card reveal">
+  {{ avatar(person) }}
+  <h3>{{ person.name }}</h3>
+  <p class="speaker-card__role">{{ person.role }}</p>
+  {% if person.org %}<p class="speaker-card__role" style="font-size:var(--text-xs)">{{ person.org }}</p>{% endif %}
+  {% if person.links %}
+  <p class="speaker-card__links">
+    {% for name, href in person.links.items() %}<a href="{{ href }}" target="_blank" rel="noopener">{{ link_labels.get(name, name | capitalize) }}</a>{% endfor %}
+  </p>
+  {% endif %}
+</article>
 {%- endmacro %}
 
 {# Detail dialog: bio, sessions, links. #}
@@ -64,7 +80,7 @@
     {% if person.links %}
     <div class="link-row">
       {% for name, href in person.links.items() %}
-      {{ ui.button(name | capitalize, href, "secondary", external=True) }}
+      {{ ui.button(link_labels.get(name, name | capitalize), href, "secondary", external=True) }}
       {% endfor %}
     </div>
     {% endif %}

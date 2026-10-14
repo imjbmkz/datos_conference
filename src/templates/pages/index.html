@@ -43,7 +43,7 @@
       </div>
       {{ ui.button("All speakers", "/speakers/", "secondary", icon_name="arrow") }}
     </div>
-    <div class="grid grid--4">
+    <div class="grid grid--4 grid--people">
       {% for p in speaker_groups.speaker %}{{ people.speaker_card(p, interactive=False) }}{% endfor %}
     </div>
   </div>
