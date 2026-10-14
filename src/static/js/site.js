@@ -11,6 +11,29 @@
     window.addEventListener("scroll", onScroll, { passive: true });
   }
 
+  // --- Light / dark theme toggle ----------------------------------------------
+  // No saved choice = follow the device setting. A click saves the opposite of what's showing.
+  var root = document.documentElement;
+  var themeBtn = document.querySelector(".theme-toggle");
+  var darkQuery = window.matchMedia ? window.matchMedia("(prefers-color-scheme: dark)") : null;
+  var isDark = function () {
+    var t = root.getAttribute("data-theme");
+    return t ? t === "dark" : !!(darkQuery && darkQuery.matches);
+  };
+  var syncThemeButton = function () {
+    if (themeBtn) themeBtn.setAttribute("aria-label", isDark() ? "Switch to light mode" : "Switch to dark mode");
+  };
+  if (themeBtn) {
+    themeBtn.addEventListener("click", function () {
+      var next = isDark() ? "light" : "dark";
+      root.setAttribute("data-theme", next);
+      try { localStorage.setItem("datos-theme", next); } catch (e) {}
+      syncThemeButton();
+    });
+    if (darkQuery && darkQuery.addEventListener) darkQuery.addEventListener("change", syncThemeButton);
+    syncThemeButton();
+  }
+
   // --- Mobile navigation drawer ---------------------------------------------
   var toggle = document.querySelector(".menu-toggle");
   var drawer = document.getElementById("nav-drawer");

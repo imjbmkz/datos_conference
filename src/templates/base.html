@@ -10,7 +10,13 @@
   <title>{{ full_title }}</title>
   <meta name="description" content="{{ page_description }}">
   <link rel="canonical" href="{{ canonical }}">
-  <meta name="theme-color" content="#0b2a5b">
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0b1424" media="(prefers-color-scheme: dark)">
+  <meta name="color-scheme" content="light dark">
+  <script>
+    /* Apply a saved theme choice before the page draws, so there's no flash. */
+    try { var t = localStorage.getItem("datos-theme"); if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t); } catch (e) {}
+  </script>
 
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="{{ site.full_name }}">
