@@ -1,0 +1,110 @@
+/* Design tokens. Components use these variables only, so a new edition can be
+   re-themed by changing values here (or overriding them per year). */
+:root {
+  /* Brand colors, sampled from the DATOS key visual */
+  --color-navy: #0b2a5b;
+  --color-navy-700: #143a74;
+  --color-blue: #1e6fd9;
+  --color-blue-600: #1a5fbb;
+  --color-teal: #14b3b0;
+  --color-green: #1b5e20;
+  --color-sun: #fcd116;
+  --color-red: #ce1126;
+
+  /* Neutrals */
+  --color-ink: #0f1b2d;
+  --color-ink-soft: #46546a;
+  --color-ink-faint: #6b7890;
+  --color-line: #dfe6f0;
+  --color-surface: #ffffff;
+  --color-tint: #f2f6fb;
+  --color-tint-2: #e8f1fb;
+
+  /* Surfaces */
+  --color-bg: #ffffff;
+  --header-bg: rgba(255, 255, 255, 0.86);
+
+  /* Semantic */
+  --color-strong: var(--color-navy);
+  --color-link-hover: var(--color-blue-600);
+  --color-text: var(--color-ink);
+  --color-text-muted: var(--color-ink-soft);
+  --color-link: var(--color-blue);
+  --color-focus: #f59e0b;
+  --gradient-brand: linear-gradient(120deg, var(--color-blue) 0%, var(--color-teal) 100%);
+  --gradient-hero: radial-gradient(1200px 500px at 85% -10%, rgba(20, 179, 176, 0.14), transparent 60%),
+    radial-gradient(900px 500px at 0% 10%, rgba(30, 111, 217, 0.12), transparent 60%),
+    linear-gradient(180deg, #ffffff 0%, var(--color-tint) 100%);
+
+  /* Session type badges */
+  --badge-talk: #1e6fd9;
+  --badge-panel: #0f8f8c;
+  --badge-remarks: #5b4bc4;
+  --badge-break: #8a6d00;
+  --badge-logistics: #5a6779;
+
+  /* Type */
+  --font-display: "Montserrat", "Poppins", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --text-xs: 0.8125rem;
+  --text-sm: 0.9375rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.375rem;
+  --text-2xl: clamp(1.6rem, 1.2rem + 1.4vw, 2.25rem);
+  --text-3xl: clamp(2rem, 1.4rem + 2.4vw, 3rem);
+  --leading: 1.6;
+
+  /* Space, radius, shadow */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: clamp(3.5rem, 2.5rem + 4vw, 6rem);
+  --radius-sm: 8px;
+  --radius: 14px;
+  --radius-lg: 22px;
+  --radius-pill: 999px;
+  --shadow-sm: 0 1px 2px rgba(11, 42, 91, 0.06), 0 1px 3px rgba(11, 42, 91, 0.06);
+  --shadow: 0 10px 30px -12px rgba(11, 42, 91, 0.22);
+
+  /* Layout */
+  --container: 1200px;
+  --gutter: clamp(1rem, 0.6rem + 2vw, 2rem);
+  --header-h: 68px;
+}
+
+/* Dark theme. Follows the visitor's system setting unless they pick a theme
+   with the header toggle (stored as data-theme on <html>). Only tokens change here. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-bg: #0b1424; --color-surface: #121f33; --header-bg: rgba(11, 20, 36, 0.86);
+    --color-tint: #0e1a2d; --color-tint-2: #172840; --color-line: #24364f;
+    --color-ink: #e4ecf7; --color-ink-soft: #b3c1d5; --color-ink-faint: #8796ad;
+    --color-strong: #f2f6fc; --color-link: #6ea8ff; --color-link-hover: #9cc3ff;
+    --color-navy: #1a3b73; --color-teal: #2cc9c5;
+    --badge-talk: #6ea8ff; --badge-panel: #3fd0cc; --badge-remarks: #a99bff; --badge-break: #e2c25b; --badge-logistics: #a3b1c4;
+    --gradient-hero: radial-gradient(1200px 500px at 85% -10%, rgba(20, 179, 176, 0.18), transparent 60%),
+      radial-gradient(900px 500px at 0% 10%, rgba(30, 111, 217, 0.2), transparent 60%),
+      linear-gradient(180deg, #0b1424 0%, #0e1a2d 100%);
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3); --shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.6);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --color-bg: #0b1424; --color-surface: #121f33; --header-bg: rgba(11, 20, 36, 0.86);
+  --color-tint: #0e1a2d; --color-tint-2: #172840; --color-line: #24364f;
+  --color-ink: #e4ecf7; --color-ink-soft: #b3c1d5; --color-ink-faint: #8796ad;
+  --color-strong: #f2f6fc; --color-link: #6ea8ff; --color-link-hover: #9cc3ff;
+  --color-navy: #1a3b73; --color-teal: #2cc9c5;
+  --badge-talk: #6ea8ff; --badge-panel: #3fd0cc; --badge-remarks: #a99bff; --badge-break: #e2c25b; --badge-logistics: #a3b1c4;
+  --gradient-hero: radial-gradient(1200px 500px at 85% -10%, rgba(20, 179, 176, 0.18), transparent 60%),
+    radial-gradient(900px 500px at 0% 10%, rgba(30, 111, 217, 0.2), transparent 60%),
+    linear-gradient(180deg, #0b1424 0%, #0e1a2d 100%);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3); --shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.6);
+  color-scheme: dark;
+}
+:root[data-theme="light"] { color-scheme: light; }

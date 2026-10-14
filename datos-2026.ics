@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Data Engineering Pilipinas//DATOS//EN
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:datos-2026@datos.dataengineering.ph
+DTSTAMP:20261014T141354Z
+DTSTART:20261120T074500Z
+DTEND:20261120T130000Z
+SUMMARY:DATOS: The Data Engineering Pilipinas Conference 2026
+DESCRIPTION:Getting a Data Engineering Career in the Age of Artificial Inte
+ lligence. Schedule: https://imjbmkz.github.io/datos_conference/schedule/
+LOCATION:Google Philippines Headquarters\, Bonifacio Global City\, Taguig
+URL:https://imjbmkz.github.io/datos_conference/
+END:VEVENT
+END:VCALENDAR
